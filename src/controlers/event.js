@@ -1,10 +1,12 @@
 const Event = require('../models/event');
 const express = require('express');
 
+
 exports.all = (req, res) => {
 
   Event.find({})
-  .populate('types')
+  .populate('type')
+  .populate('image')
      .exec()
      .then((events) => {
        res.json(events);
@@ -18,7 +20,7 @@ exports.all = (req, res) => {
 exports.findOne = (req,res) =>{
   Event.findOne({
   _id: req.params.id
-}).populate('types')
+}).populate('type').populate('image')
   .exec().then((event) =>{
       res.json(event)
 
@@ -35,8 +37,10 @@ exports.add = (req,res) =>{
    address: req.body.address,
    lat:req.body.lat,
    lng:req.body.lng,
+   type:req.body.type,
+   image:req.body.image
  });
-    event.types.push(req.body.type)
+  //  event.types.push(req.body.type)
  event.save()
    .then(savedEvent => res.json(savedEvent))
    .catch(e => next(e));

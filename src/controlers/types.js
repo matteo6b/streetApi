@@ -60,7 +60,7 @@ exports.delete = (req,res) =>{
   if(err) {
     res.send(err)
   } else {
-    console.log(type);
+    res.send(type);
     res.status(204);
 }
 })

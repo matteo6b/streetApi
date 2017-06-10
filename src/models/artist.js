@@ -19,10 +19,10 @@ const ArtistSchema = new mongoose.Schema({
      info:{
        type:String
      },
-     type:{
-       type:String
-     }
-  events:[{ type: Schema.Types.ObjectId, ref: 'Event' }]
+  events:[{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  type : { type: Schema.Types.ObjectId, ref: 'Type' },
+  image : { type: Schema.Types.ObjectId, ref: 'Image' }
+
 })
 
 module.exports = mongoose.model('Artist', ArtistSchema);

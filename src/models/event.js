@@ -11,15 +11,17 @@ const EventSchema = new mongoose.Schema({
       address:{
         type:String,
       },
+      image:{
+        type:String,
+      },
       lat:{
         type: SchemaTypes.Double,
       },
       lng:{
         type: SchemaTypes.Double,
       },
-      _creator:{ type: Number, ref: 'Artist' },
-      types : [{ type: Schema.Types.ObjectId, ref: 'Type' }]
-
+      type : { type: Schema.Types.ObjectId, ref: 'Type' },
+      image : { type: Schema.Types.ObjectId, ref: 'Image' }
 
 })
 
